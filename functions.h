@@ -85,7 +85,6 @@ void  Add(float **input1,float input2[][conv_size_end],float **output,float row,
       output[i][j]=input1[i][j]+input2[i][j];
   }
  }
- //Serial.println(F("Add Good... "));
 }
 
 //////// ##########################  Dense Layer   #########################
@@ -97,7 +96,6 @@ void Dense(float input[],float output[],float out_size,float in_size,const float
     }
     output[j] += b[j];
   }
-  //Serial.println(F("Dense Good... "));
 }
 
 //////// ##########################  Relu Layer   #########################
@@ -114,7 +112,6 @@ void Relu(float **input, float col, float in_size)
       {input[i][j]=0;}
     }
   }
-  //Serial.println(F("Relu Good... "));
 }
 
 //////// ##########################  Maxpooling 1D Layer   #########################
@@ -167,7 +164,6 @@ void Maxpooling(float **input,float output[][conv_size_end],float in_size,int co
  }
  *output_size=out_size;
   Clear_matriz_max(input_pad,conv_size_end,2065);
- //Serial.println(F("Max Good... "));
 }
 
 //////// ##########################  Averagepooling 1D Layer   #########################
@@ -213,7 +209,6 @@ void Avgpooling(float **input,float **output,float in_size,int col,float stride,
  }
  *output_size=out_size;
   Clear_matriz_max(input_pad,conv_size_end,2065);
- //Serial.println(F("Avg Good... "));
 }
 
 //////// ##########################  Batch Normalization Layer   #########################
@@ -226,7 +221,6 @@ for(int j=0;j<col;j++){
 output[i][j]=((input[i][j]-mean[j])/(sqrt(variance[j]+eps)))*gama[j]+beta[j];
   }
  }
- //Serial.println(F("Batch Good... "));
 }
 
 //////// ##########################  Convolution 1D Layer   #########################
@@ -270,6 +264,7 @@ void Convolution_input(float input[][input_model_size],const float kernel[][inpu
     }
    output[count][j]+=bias[j];
       
+        /// Funcion Relu implicita //////
 //   /////// Relu ///////////
 //   if(output[count][j]>0)
 //     {output[count][j] += epsi;}
@@ -282,7 +277,6 @@ void Convolution_input(float input[][input_model_size],const float kernel[][inpu
  }
  *output_size=out_size;
  Clear_matriz_max(input_pad,1,2065);
- //Serial.println(F("Conv Good... "));
 }
 
 void Convolution(float **input,const float kernel[][conv_size],float **output,const float bias[],float in_size,float col,int n_kernels,float stride, float kernel_size,float *output_size){
@@ -323,6 +317,8 @@ void Convolution(float **input,const float kernel[][conv_size],float **output,co
      }
     }
  output[count][j]+=bias[j];
+        
+  /// Funcion Relu implicita //////       
 //   /////// Relu ///////////
 //   if(output[count][j]>0)
 //      {output[count][j] += epsi;}
@@ -335,7 +331,6 @@ void Convolution(float **input,const float kernel[][conv_size],float **output,co
  }
  *output_size=out_size;
   Clear_matriz_max(input_pad,conv_size_end,2065);
- //Serial.println(F("Conv Good... "));
 }
 
 void Convolution32(float **input,const float kernel[][conv_size_end],float **output,const float bias[],float in_size,float col,int n_kernels,float stride, float kernel_size,float *output_size){
@@ -376,6 +371,7 @@ void Convolution32(float **input,const float kernel[][conv_size_end],float **out
      }
     }
  output[count][j]+=bias[j];
+ /// Funcion Relu implicita //////       
 //   /////// Relu ///////////
 //   if(output[count][j]>0)
 //      {output[count][j] += epsi;}
@@ -388,7 +384,6 @@ void Convolution32(float **input,const float kernel[][conv_size_end],float **out
  }
  *output_size=out_size;
   Clear_matriz_max(input_pad,conv_size_end,529);
- //Serial.println(F("Conv Good... "));
 }
 
 
@@ -402,7 +397,6 @@ void Flatten(float **input,float col, float in_size){
           count += 1;
         }
       }
- //Serial.println(F("Flatten Good... "));
 }
 
 //////// ##########################  Lambda Layer   #########################
@@ -426,21 +420,7 @@ void Softmax(float z[output_model_size],float output[], int outputs){
      if(z[k]>=maximo)
      {maximo=z[k];}
      else{maximo += 0;}
-  }
-
-//  //SOFTMAX NORMALIZED
-//  for (int k=0; k<outputs;k++)
-//  {
-//      if(maximo>88)
-//      {z[k] = (z[k]*88)/maximo;}
-//      else{z[k] += 0;}
-//      t[k] = exp(z[k]);
-//	suma+=t[k];
-//  }
-//  
-//  for (int i=0;i<outputs;i++)
-//  {output[i]=t[i]/suma;}
-  
+  } 
   //TAKE THE MAXIMUM
   for(int i=0;i<outputs;i++)
     {
@@ -449,6 +429,4 @@ void Softmax(float z[output_model_size],float output[], int outputs){
     else
     {output[i]=0;}
     }
-    
-  //Serial.println(F("Softmax Good... "));
 }
