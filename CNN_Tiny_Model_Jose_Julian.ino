@@ -80,11 +80,8 @@ void lectura(){
     }
   }
   else{
-    // send the value of analog input 0:
-    //Serial.println(analogRead(14));//*
     toma_senal[conteo_input]= analogRead(14);
   }
-  //Serial.println(toma_senal[conteo_input]);
   conteo_input = conteo_input+1;
 }
 
@@ -113,9 +110,7 @@ Clear_matriz_input(senal_entrada,input_model_size,clear_size);
 ////ASIGNACION DE LA ENTRADA PARA LA INFERENCIA 
 for(int i=0;i<clear_size;i++)
 {
-  //senal_entrada[i][1]=senal[i];
   senal_entrada[i][1]=(senal[i]-media_input)/varianza_input;
-  //Serial.println(senal_entrada[i][1]);
 }
 Clear_vector(senal,clear_size);
  
@@ -370,7 +365,7 @@ Relu(output_1,col,in_size);
 
 n_kernels=32;
 
-////aqui van los float del segundo
+////Cambio del tamaño de los filtros de las capas convolucionales
 
 Clear_matriz(output_2_32,conv_size_end,clear_end);
 
@@ -479,10 +474,7 @@ for(int i=0;i<out_size;i++){
 ////digitalWrite(ledPin, LOW); 
 //Serial.println("FIN DE LA INFERENCIA");
 
-//ACA ESTABA INICIALMENTE LA ASIGNACION DEL PERIODO
-
-
-////DEMORA MIENTRAS SE TERMINA LA TOMA DE DATOS 
+////ESPERA MIENTRAS SE TERMINA LA TOMA DE DATOS 
 conteo_interno=0;
 while(conteo_interno<clear_size){
   conteo_interno=conteo_input;
