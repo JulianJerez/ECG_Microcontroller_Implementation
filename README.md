@@ -6,4 +6,7 @@ Heart diseases have one of the highest mortality rates in the world. In addition
 ### *Model.ino*
 This is the main file of the project. It contains the description of the implementation of the CNN.
 ### *functions.h*
-This header file contains the description of the functions of each layer 
+This header file contains the description of the functions for each layer of the implementation of the CNN. 
+### *model_parameters.h*
+This header file contains the parameters of the CNN implemented. We used the progmem function to store them in the Flash Memory of the Microcontroller.
+
