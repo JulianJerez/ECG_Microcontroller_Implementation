@@ -10,5 +10,8 @@ This header file contains the description of the functions for each layer of the
 ### *model_parameters.h*
 This header file contains the parameters of the CNN implemented. We used the progmem function to store them in the Flash Memory of the Microcontroller.
 
+## OPERATION VIDEO
+In the next video you will see a full description of the operation of our project. 
+
 [![Alt text](https://img.youtube.com/vi/C8KOdEeG2JY/0.jpg)](https://youtu.be/C8KOdEeG2JY)
 
