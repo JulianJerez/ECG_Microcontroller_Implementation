@@ -9,6 +9,10 @@ This is the main file of the project. It contains the description of the impleme
 This header file contains the description of the functions for each layer of the implementation of the CNN. 
 ### *model_parameters.h*
 This header file contains the parameters of the CNN implemented. We used the progmem function to store them in the Flash Memory of the Microcontroller.
+To generate it we use the rest of the files: write_parameters_matrix.m, write_parameters_vector.m and Open_h5.m. 
+The first two are functions for Matlab that allow us to write the parameters in the format required. The Open_h5.m is the main file in Matlab. 
+To generate the header file we need the name we want for it and the weights of the CNN in a .h5 file generated in Tensorflow after training the Network. 
+By running the Open_h5.m we will obtain the header file for the implementation. 
 
 ## OPERATION VIDEO
 In the next video you will see a full description of the operation of our project. 
