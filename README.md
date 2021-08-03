@@ -15,7 +15,7 @@ The first two are functions for Matlab that allow us to write the parameters in 
 To generate the header file we need the name we want for it and the weights of the CNN in a .h5 file generated in Tensorflow after training the Network. 
 By running the Open_h5.m we will obtain the header file for the implementation. 
 
-## OPERATION VIDEO
+## Operation Video
 In the next video you will see a full description of the operation of our project. 
 
 [![Alt text](https://img.youtube.com/vi/C8KOdEeG2JY/0.jpg)](https://youtu.be/C8KOdEeG2JY)
